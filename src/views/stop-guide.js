@@ -20,14 +20,24 @@ export function renderStopGuide({ stop, nextStop, state, copy, onTaskComplete, o
     image.src = stop.visual.src;
     image.alt = localized(stop.visual.alt, language);
     image.hidden = false;
-    credit.href = stop.visual.sourceUrl;
-    credit.textContent = `${language === "ru" ? "Фото" : "照片"}: ${stop.visual.credit} · ${stop.visual.license}`;
+    const sourceLink = document.createElement("a");
+    sourceLink.href = stop.visual.sourceUrl;
+    sourceLink.target = "_blank";
+    sourceLink.rel = "noreferrer";
+    sourceLink.textContent = `${language === "ru" ? "Фото" : "照片"}: ${stop.visual.credit}`;
+    const licenseLink = document.createElement("a");
+    licenseLink.href = stop.visual.licenseUrl;
+    licenseLink.target = "_blank";
+    licenseLink.rel = "noreferrer";
+    licenseLink.textContent = stop.visual.license;
+    credit.replaceChildren(sourceLink, document.createTextNode(" · "), licenseLink, document.createTextNode(` · ${localized(stop.visual.modificationNote, language)}`));
     credit.hidden = false;
     visual.classList.add("has-photo");
   } else {
     image.removeAttribute("src");
     image.alt = "";
     image.hidden = true;
+    credit.replaceChildren();
     credit.hidden = true;
     visual.classList.remove("has-photo");
   }

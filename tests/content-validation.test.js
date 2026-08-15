@@ -18,3 +18,15 @@ test("坐标与俄语未人工复核时 release 门槛拒绝发布", () => {
   assert.ok(errors.some((error) => error.includes("coordinate not verified")));
   assert.ok(errors.some((error) => error.includes("russian audio not approved")));
 });
+
+test("五站均提供可追溯的本地实景图", () => {
+  const fields = ["src", "alt", "credit", "license", "licenseUrl", "sourceUrl", "modificationNote"];
+  for (const stop of ROUTE.stops) {
+    assert.ok(stop.visual, `${stop.id}: visual missing`);
+    for (const field of fields) assert.ok(stop.visual[field], `${stop.id}: visual.${field} missing`);
+    assert.ok(stop.visual.alt.ru && stop.visual.alt.zh, `${stop.id}: bilingual alt missing`);
+    assert.match(stop.visual.src, /^\.\/assets\/images\/.+\.jpg$/);
+    assert.match(stop.visual.sourceUrl, /^https:\/\/commons\.wikimedia\.org\/wiki\/File:/);
+    assert.match(stop.visual.licenseUrl, /^https:\/\/creativecommons\.org\//);
+  }
+});

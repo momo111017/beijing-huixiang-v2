@@ -12,17 +12,18 @@ test("游客端俄语默认并只暴露精简主导航", async () => {
   assert.doesNotMatch(html, /data-view="admin"/);
   assert.doesNotMatch(html, /data-view="map"/);
   assert.doesNotMatch(html, /data-view="task"/);
+  assert.doesNotMatch(html, /home-facts|factStops|factFlagship|factAudio/);
 });
 
 test("导览探索区使用上下全宽布局", async () => {
   const layoutCss = await readFile(new URL("../styles/layout.css", import.meta.url), "utf8");
   const componentCss = await readFile(new URL("../styles/components.css", import.meta.url), "utf8");
   assert.match(layoutCss, /\.guide-explore-grid\s*\{[^}]*grid-template-columns:\s*minmax\(0,\s*1fr\)\s*;/s);
-  assert.match(layoutCss, /\.guide-content\s*\{[^}]*gap:\s*9px[^}]*padding:\s*16px\s+24px\s+14px/s);
-  assert.match(layoutCss, /\.task-module,\s*\.qa-module\s*\{[^}]*padding:\s*10px\s+14px/s);
+  assert.match(layoutCss, /\.guide-content\s*\{[^}]*gap:\s*9px[^}]*padding:\s*16px\s+24px\s+20px/s);
+  assert.match(layoutCss, /\.task-module,\s*\.qa-module\s*\{[^}]*padding:\s*12px\s+16px/s);
   assert.match(componentCss, /\.task-options\s*\{[^}]*grid-template-columns:\s*repeat\(3,\s*minmax\(0,\s*1fr\)\)/s);
   assert.match(componentCss, /\.qa-module:has\(\.qa-answer:not\(:empty\)\)\s+\.suggested-questions\s*\{[^}]*grid-template-columns:\s*repeat\(3,\s*minmax\(0,\s*1fr\)\)/s);
-  assert.match(componentCss, /\.qa-answer\s*\{[^}]*max-height:\s*64px/s);
+  assert.match(componentCss, /\.qa-answer\s*\{[^}]*max-height:\s*74px/s);
 });
 
 test("重新渲染导览时清除上一语言的追问答案", async () => {
@@ -44,4 +45,11 @@ test("桌面端使用统一柔化令牌和路线栅格", async () => {
   assert.match(layout, /\.route-stop-list button > span:nth-child\(2\) small\s*\{[^}]*white-space:\s*nowrap[^}]*text-overflow:\s*ellipsis/s);
   assert.match(layout, /\.route-heading h1\s*\{[^}]*text-wrap:\s*wrap/s);
   assert.match(layout, /@media\s*\(min-width:\s*1600px\)[^{]*\{[^}]*\.route-view\s*\{[^}]*grid-template-columns:\s*380px/s);
+});
+
+test("路线选中态和五站导览使用统一暖色与伸展布局", async () => {
+  const layout = await readFile(new URL("../styles/layout.css", import.meta.url), "utf8");
+  assert.match(layout, /\.route-stop-list button\.active\s*\{[^}]*border-color:\s*var\(--rust\)[^}]*background:\s*#efe4d4[^}]*color:\s*var\(--ink\)/s);
+  assert.match(layout, /\.guide-explore-grid\s*\{[^}]*grid-template-rows:\s*minmax\(140px,\s*\.9fr\)\s+minmax\(170px,\s*1\.1fr\)[^}]*align-content:\s*stretch/s);
+  assert.match(layout, /\.complete-stop\s*\{[^}]*width:\s*calc\(100%\s*-\s*80px\)[^}]*margin:\s*0\s+auto/s);
 });

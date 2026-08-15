@@ -1,5 +1,12 @@
 # 北境回响网页原型 V2
 
+## 公网预览
+
+- GitHub Pages：<https://momo111017.github.io/beijing-huixiang-v2/>
+- Cloudflare Pages：<https://beijing-huixiang-v2.pages.dev/>
+
+以上地址发布的是 V2 电脑端候选版本，V1 原地址保持不变。俄语音频和五个点位坐标仍保留“待人工复核”状态。
+
 ## 本地运行
 
 ```bash

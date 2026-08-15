@@ -3,7 +3,6 @@ export const UI_COPY = {
     navHome: "Главная", navRoute: "Мой маршрут", navArchive: "Источники", pilot: "Харбин · пилот",
     homeKicker: "HARBIN · ROUTE 01", homeTitle: "Русское наследие<br />Харбина",
     homeLead: "Пять реальных мест раскрывают историю железной дороги, торговли, архитектуры, памяти и городской жизни.",
-    factStops: "реальных объектов", factFlagship: "подробная экскурсия", factAudio: "аудио на каждой остановке",
     mapTitle: "Карта маршрута", mapLoading: "Загрузка карты", mapLoadingDetail: "Проверяем пять объектов…", retryMap: "Повторить загрузку",
     principleKicker: "ЛОГИКА МАРШРУТА", principleTitle: "География ведёт, история объясняет", principleCopy: "Порядок остановок уменьшает возвраты. Исторические переходы связывают их в единый рассказ.",
     routeKicker: "МАРШРУТ 01 · ХАРБИН", routeTitle: "Пять остановок городского диалога", routeIntro: "Выберите объект на карте или продолжите с текущей остановки.", progress: "Прогресс", openGuide: "Открыть экскурсию",
@@ -17,7 +16,6 @@ export const UI_COPY = {
   zh: {
     navHome: "首页", navRoute: "我的路线", navArchive: "史料来源", pilot: "哈尔滨试点",
     homeKicker: "哈尔滨 · 路线 01", homeTitle: "百年俄韵<br />冰城共生", homeLead: "五个真实地点串联铁路、商业、建筑、纪念与城市生活的百年交往。",
-    factStops: "个真实点位", factFlagship: "个完整旗舰导览", factAudio: "每站俄语音频",
     mapTitle: "路线地图", mapLoading: "正在加载地图", mapLoadingDetail: "正在核对五个真实点位……", retryMap: "重新加载地图",
     principleKicker: "路线逻辑", principleTitle: "地理顺序带路，历史叙事解释", principleCopy: "点位排序减少折返，站间过渡语把不同年代重新连成一条故事线。",
     routeKicker: "路线 01 · 哈尔滨", routeTitle: "五站城市交流路线", routeIntro: "从地图或左侧列表选择点位，也可以继续上次游览。", progress: "路线进度", openGuide: "进入导览",

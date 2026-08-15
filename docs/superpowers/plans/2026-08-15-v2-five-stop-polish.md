@@ -28,11 +28,11 @@
 - Consumes: `index.html`、`styles/layout.css`、`ROUTE.stops`。
 - Produces: 删除首页数据栏、非绿色选中态和五站完整媒体字段的回归保护。
 
-- [ ] **Step 1: 写失败测试**
+- [x] **Step 1: 写失败测试**
 
 在 HTML 测试中断言 `home-facts`、`factStops`、`factFlagship`、`factAudio` 不存在；在 CSS 测试中断言选中卡使用 `#efe4d4` 与 `var(--rust)`；在内容测试中断言五站 `visual` 均含 `src`、`alt.ru`、`alt.zh`、`credit`、`license`、`licenseUrl`、`sourceUrl`、`modificationNote`。
 
-- [ ] **Step 2: 运行并确认失败**
+- [x] **Step 2: 运行并确认失败**
 
 Run: `node --test tests/html-contract.test.js tests/content-validation.test.js`
 
@@ -53,21 +53,21 @@ Expected: FAIL，首页数据栏仍存在、选中态仍为绿色、四站没有
 - Consumes: Wikimedia Commons 1600px 缩略图和 `visual` 数据接口。
 - Produces: 五站均可渲染的本地实景图与来源／许可双链接。
 
-- [ ] **Step 1: 下载并验证四张 1600px JPEG**
+- [x] **Step 1: 下载并验证四张 1600px JPEG**
 
 Run: `curl -L '<Special:Redirect URL>?width=1600' -o assets/images/<file>.jpg`
 
 Expected: 四文件均为非零 JPEG，宽或高不小于 1200px。
 
-- [ ] **Step 2: 给四站增加完整 `visual` 对象**
+- [x] **Step 2: 给四站增加完整 `visual` 对象**
 
 字段固定为：`src`、`alt`、`credit`、`license`、`licenseUrl`、`sourceUrl`、`modificationNote`。
 
-- [ ] **Step 3: 将图片署名渲染为来源与许可证两个链接**
+- [x] **Step 3: 将图片署名渲染为来源与许可证两个链接**
 
 `#guide-photo-credit` 内显示“照片／Фото：作者 · 许可 · 经尺寸压缩与界面裁切”，来源和许可均可点击。
 
-- [ ] **Step 4: 运行媒体契约测试**
+- [x] **Step 4: 运行媒体契约测试**
 
 Run: `node --test tests/content-validation.test.js && node scripts/validate-assets.mjs`
 
@@ -84,23 +84,23 @@ Expected: PASS。
 - Consumes: 现有共享路线卡与五站导览 DOM。
 - Produces: 暖米灰路线选中态、删除后的首页、五站共享放大导览布局。
 
-- [ ] **Step 1: 删除首页数据栏 DOM 和相关 CSS**
+- [x] **Step 1: 删除首页数据栏 DOM 和相关 CSS**
 
 删除 `.home-facts` HTML 与全部 `.home-facts` 规则。
 
-- [ ] **Step 2: 改路线选中态**
+- [x] **Step 2: 改路线选中态**
 
 使用 `background:#efe4d4`、`color:var(--ink)`、`border-color:var(--rust)`、红褐编号和低强度内描边，不使用绿色底色。
 
-- [ ] **Step 3: 放大并拉伸五站导览内容**
+- [x] **Step 3: 放大并拉伸五站导览内容**
 
 提高章节正文、音频、任务、追问字号；让 `.guide-explore-grid` 使用剩余高度并将任务／追问按比例填充；限制内部溢出。
 
-- [ ] **Step 4: 收窄并上移下一站按钮**
+- [x] **Step 4: 收窄并上移下一站按钮**
 
 `.guide-footer` 水平居中，`.complete-stop` 使用 `width:calc(100% - 80px)`，底部保留 10—14px 间距。
 
-- [ ] **Step 5: 运行结构与样式测试**
+- [x] **Step 5: 运行结构与样式测试**
 
 Run: `node --test tests/html-contract.test.js`
 
@@ -115,17 +115,17 @@ Expected: PASS。
 - Consumes: 五个 MP3、五个 TXT、页面 `stop.scenes` 俄语正文。
 - Produces: 可复查的逐站音频验收表。
 
-- [ ] **Step 1: 完整解码与非静音检查**
+- [x] **Step 1: 完整解码与非静音检查**
 
 Run: `ffmpeg -v error -i <audio> -f null -`
 
 Expected: 五段零解码错误；时长均为 20—60 秒；音频非静音。
 
-- [ ] **Step 2: Whisper 转写并比对关键事实**
+- [x] **Step 2: Whisper 转写并比对关键事实**
 
 使用 `mlx-community/whisper-large-v3-turbo`、`--language ru`、逐词时间戳；逐站比较 MP3 转写、TXT 和页面正文中的年份、专名、地点和事件关系。
 
-- [ ] **Step 3: 保持人工审核状态**
+- [x] **Step 3: 保持人工审核状态**
 
 确认五站 `reviewStatus` 仍为 `needs-review`，在验收记录注明仍待俄方母语成员复核自然度和发音。
 
@@ -138,7 +138,7 @@ Expected: 五段零解码错误；时长均为 20—60 秒；音频非静音。
 - Consumes: 完成后的页面、内容数据和媒体资产。
 - Produces: 五站 × 两种语言 × 三档视口的验收证据。
 
-- [ ] **Step 1: 运行全量自动校验**
+- [x] **Step 1: 运行全量自动校验**
 
 Run: `npm run validate`
 
@@ -153,4 +153,3 @@ Expected: 内容、资产、HTML 与全部 Node 测试通过。
 Run: `git add assets index.html src styles tests docs && git commit -m "feat: polish all five V2 stops"`
 
 Expected: V2 工作区干净，V1 无改动。
-
