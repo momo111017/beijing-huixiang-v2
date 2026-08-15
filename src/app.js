@@ -77,9 +77,9 @@ function navigate(viewName) {
   if (state.view === "route" && viewName !== "route") locationController?.stop("view-left", false);
   state.view = viewName;
   showView(viewName);
-  if (viewName === "route" && mapReady) {
-    mapController.mount("route", "route-map");
-    window.setTimeout(() => mapController.resizeAll(), 100);
+  if ((viewName === "home" || viewName === "route") && mapReady) {
+    if (viewName === "route") mapController.mount("route", "route-map");
+    window.setTimeout(() => mapController.resize(viewName), 100);
   }
   if (viewName === "guide") renderGuide();
   if (viewName === "archive") renderArchive({ language: state.language, stops: ROUTE.stops });

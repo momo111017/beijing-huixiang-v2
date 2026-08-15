@@ -16,6 +16,14 @@ const markerStyle = (active) => ({
   cursor: "pointer",
 });
 
+export function resizeMountedMap(maps, key, fitMap) {
+  const map = maps.get(key);
+  if (!map) return false;
+  map.checkResize();
+  fitMap(map, key);
+  return true;
+}
+
 export function createMapController({ BMap, stops, onStopSelect }) {
   const maps = new Map();
   const markerSets = new Map();
@@ -98,7 +106,7 @@ export function createMapController({ BMap, stops, onStopSelect }) {
   }
 
   function panAllTo(point) { maps.forEach((map) => map.panTo(point)); }
-  function resizeAll() { maps.forEach((map, key) => { map.checkResize(); fit(map, key === "home"); }); }
+  function resize(key) { return resizeMountedMap(maps, key, (map, currentKey) => fit(map, currentKey === "home")); }
 
-  return { prepare, mount, selectStop, setUserPosition, panAllTo, resizeAll, getMap: (key) => maps.get(key), getPoint: (stopId) => convertedStops.get(stopId) };
+  return { prepare, mount, selectStop, setUserPosition, panAllTo, resize, getMap: (key) => maps.get(key), getPoint: (stopId) => convertedStops.get(stopId) };
 }
