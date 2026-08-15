@@ -26,4 +26,5 @@ export function showView(viewName) {
     panel.classList.toggle("active", active);
   });
   document.querySelectorAll(".nav-link").forEach((link) => link.classList.toggle("active", link.dataset.view === viewName || (viewName === "guide" && link.dataset.view === "route")));
+  document.querySelector("#source-entry")?.classList.toggle("active", viewName === "archive");
 }
