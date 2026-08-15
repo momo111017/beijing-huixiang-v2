@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { createInitialState } from "../src/core/storage.js";
-import { completeStop, completeTask, nextStopId, progressCount } from "../src/core/progress.js";
+import { completeStop, completeTask, guideNextDestination, nextStopId, progressCount } from "../src/core/progress.js";
 import { ROUTE } from "../src/data/route-content.js";
 
 test("完成站点与任务去重", () => {
@@ -13,3 +13,13 @@ test("完成站点与任务去重", () => {
 });
 test("下一站按地理顺序推进", () => assert.equal(nextStopId(ROUTE.stops, "harbin-station"), "soviet-memorial"));
 test("末站后返回 null", () => assert.equal(nextStopId(ROUTE.stops, "stalin-park"), null));
+test("导览下一站先返回路线页并选中下一点位", () => {
+  assert.deepEqual(guideNextDestination(ROUTE.stops, "harbin-station"), {
+    view: "route",
+    stopId: "soviet-memorial",
+  });
+  assert.deepEqual(guideNextDestination(ROUTE.stops, "stalin-park"), {
+    view: "route",
+    stopId: "stalin-park",
+  });
+});

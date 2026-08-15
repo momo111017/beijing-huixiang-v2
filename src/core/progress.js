@@ -12,4 +12,11 @@ export function nextStopId(stops, currentStopId) {
   return index >= 0 && index < ordered.length - 1 ? ordered[index + 1].id : null;
 }
 
+export function guideNextDestination(stops, currentStopId) {
+  return {
+    view: "route",
+    stopId: nextStopId(stops, currentStopId) || currentStopId,
+  };
+}
+
 export const progressCount = (state) => new Set(state.completedStopIds || []).size;

@@ -2,7 +2,7 @@ import { ROUTE, getStop } from "./data/route-content.js";
 import { UI_COPY } from "./data/ui-copy.js";
 import { loadState, saveState } from "./core/storage.js";
 import { localized, otherLanguage } from "./core/i18n.js";
-import { completeTask, completeStop, nextStopId, progressCount } from "./core/progress.js";
+import { completeTask, completeStop, guideNextDestination, nextStopId, progressCount } from "./core/progress.js";
 import { loadBaiduMap, resetBaiduLoaderForRetry } from "./map/baidu-loader.js";
 import { convertWgs84Point } from "./map/coordinates.js";
 import { createMapController } from "./map/map-controller.js";
@@ -96,9 +96,9 @@ function renderGuide() {
     onNextStop: (stopId) => {
       state = completeStop(state, stopId);
       persist();
-      const nextId = nextStopId(ROUTE.stops, stopId);
-      if (nextId) { selectStop(nextId); navigate("guide"); }
-      else { render(); navigate("route"); }
+      const destination = guideNextDestination(ROUTE.stops, stopId);
+      selectStop(destination.stopId);
+      navigate(destination.view);
     },
   });
 }
