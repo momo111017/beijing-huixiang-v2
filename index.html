@@ -88,34 +88,39 @@
 
       <section class="view guide-view" id="guide-view" data-view-panel="guide" aria-labelledby="guide-title" hidden>
         <div class="guide-visual" id="guide-visual">
+          <img class="guide-image" id="guide-image" alt="" hidden />
           <button class="back-button" id="back-to-route" type="button" data-view="route" data-copy="backRoute">← Вернуться к маршруту</button>
           <div class="guide-stamp"><span id="guide-order">01</span><small id="guide-period">1898—1903</small></div>
           <div class="guide-visual-copy"><p id="guide-role">Железная дорога</p><h1 id="guide-title">Харбинский вокзал</h1></div>
+          <a class="guide-photo-credit" id="guide-photo-credit" target="_blank" rel="noreferrer" hidden></a>
         </div>
         <article class="guide-content">
-          <div class="scene-tabs" id="scene-tabs"></div>
-          <p class="eyebrow" id="scene-kicker">ГЛАВА 01</p>
-          <h2 id="scene-title"></h2>
-          <p class="guide-body" id="scene-body"></p>
-          <div class="source-note" id="scene-source"></div>
+          <section class="guide-story">
+            <header class="guide-story-head"><div class="scene-tabs" id="scene-tabs"></div><p class="eyebrow" id="scene-kicker">ГЛАВА 01</p></header>
+            <h2 id="scene-title"></h2>
+            <p class="guide-body" id="scene-body"></p>
+            <div class="source-note" id="scene-source"></div>
+          </section>
           <section class="audio-module" id="audio-module">
             <div><strong data-copy="audioGuide">Русский аудиогид</strong><span id="audio-status">Готов к воспроизведению</span></div>
             <audio id="guide-audio" controls preload="metadata"></audio>
             <details><summary data-copy="transcript">Текст аудиогида</summary><p id="audio-transcript"></p></details>
           </section>
-          <section class="task-module" id="task-module">
-            <p class="eyebrow" data-copy="taskKicker">ЗАДАНИЕ ОСТАНОВКИ</p>
-            <h3 id="task-question"></h3>
-            <div class="task-options" id="task-options"></div>
-            <div class="task-feedback" id="task-feedback" role="status"></div>
-          </section>
-          <section class="qa-module" id="qa-module">
-            <p class="eyebrow" data-copy="qaKicker">ВОПРОСЫ ПО ИСТОЧНИКАМ</p>
-            <h3 data-copy="qaTitle">Что ещё узнать об этом месте?</h3>
-            <div class="suggested-questions" id="suggested-questions"></div>
-            <article class="qa-answer" id="qa-answer"></article>
-          </section>
-          <button class="button primary complete-stop" id="complete-stop-button" type="button"></button>
+          <div class="guide-explore-grid" id="guide-explore-grid">
+            <section class="task-module" id="task-module">
+              <p class="eyebrow" data-copy="taskKicker">ЗАДАНИЕ ОСТАНОВКИ</p>
+              <h3 id="task-question"></h3>
+              <div class="task-options" id="task-options"></div>
+              <div class="task-feedback" id="task-feedback" role="status"></div>
+            </section>
+            <section class="qa-module" id="qa-module">
+              <p class="eyebrow" data-copy="qaKicker">ВОПРОСЫ ПО ИСТОЧНИКАМ</p>
+              <h3 data-copy="qaTitle">Что ещё узнать об этом месте?</h3>
+              <div class="suggested-questions" id="suggested-questions"></div>
+              <article class="qa-answer" id="qa-answer"></article>
+            </section>
+          </div>
+          <footer class="guide-footer" id="guide-footer"><button class="button primary complete-stop" id="complete-stop-button" type="button"></button></footer>
         </article>
       </section>
 

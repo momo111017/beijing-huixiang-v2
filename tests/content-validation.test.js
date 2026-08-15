@@ -6,7 +6,10 @@ import { validateRouteContent } from "../scripts/validate-content.mjs";
 test("五站内容模型满足 V2 草稿契约", () => {
   assert.deepEqual(validateRouteContent(ROUTE), []);
   assert.equal(ROUTE.stops.length, 5);
-  assert.equal(ROUTE.stops.find((stop) => stop.id === "harbin-station").scenes.length, 3);
+  const station = ROUTE.stops.find((stop) => stop.id === "harbin-station");
+  assert.equal(station.scenes.length, 3);
+  assert.match(station.visual.src, /assets\/images\/harbin-station/);
+  assert.equal(station.visual.license, "CC BY-SA 4.0");
   assert.ok(ROUTE.stops.every((stop) => stop.questionIds.length >= 2));
 });
 

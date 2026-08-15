@@ -89,15 +89,16 @@ function navigate(viewName) {
 function openGuide() { navigate("guide"); }
 
 function renderGuide() {
+  const followingStopId = nextStopId(ROUTE.stops, selectedStop().id);
   renderStopGuide({
-    stop: selectedStop(), state, copy: copy(),
+    stop: selectedStop(), nextStop: followingStopId ? getStop(followingStopId) : null, state, copy: copy(),
     onTaskComplete: (taskId) => { state = completeTask(state, taskId); persist(); },
-    onStopComplete: (stopId) => {
+    onNextStop: (stopId) => {
       state = completeStop(state, stopId);
       persist();
       const nextId = nextStopId(ROUTE.stops, stopId);
-      if (nextId) { selectStop(nextId); navigate("route"); }
-      else { render(); navigate("archive"); }
+      if (nextId) { selectStop(nextId); navigate("guide"); }
+      else { render(); navigate("route"); }
     },
   });
 }

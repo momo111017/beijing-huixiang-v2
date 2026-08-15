@@ -7,7 +7,7 @@ const root = new URL("../", import.meta.url);
 export async function validateAssets() {
   const errors = [];
   for (const stop of ROUTE.stops) {
-    for (const path of [stop.audio.src, stop.audio.transcript]) {
+    for (const path of [stop.audio.src, stop.audio.transcript, stop.visual?.src].filter(Boolean)) {
       const url = new URL(path.replace("./", ""), root);
       try { await access(url, constants.R_OK); if ((await stat(url)).size === 0) errors.push(`${stop.id}: empty ${path}`); }
       catch { errors.push(`${stop.id}: missing ${path}`); }

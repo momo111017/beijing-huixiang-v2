@@ -6,13 +6,31 @@ import { getSource } from "../data/route-content.js";
 
 const twoDigits = (value) => String(value).padStart(2, "0");
 
-export function renderStopGuide({ stop, state, copy, onTaskComplete, onStopComplete }) {
+export function renderStopGuide({ stop, nextStop, state, copy, onTaskComplete, onNextStop }) {
   const language = state.language;
   let activeSceneIndex = 0;
   document.querySelector("#guide-order").textContent = twoDigits(stop.routeOrder);
   document.querySelector("#guide-period").textContent = stop.period;
   document.querySelector("#guide-role").textContent = localized(stop.role, language);
   document.querySelector("#guide-title").textContent = localized(stop.name, language);
+  const visual = document.querySelector("#guide-visual");
+  const image = document.querySelector("#guide-image");
+  const credit = document.querySelector("#guide-photo-credit");
+  if (stop.visual) {
+    image.src = stop.visual.src;
+    image.alt = localized(stop.visual.alt, language);
+    image.hidden = false;
+    credit.href = stop.visual.sourceUrl;
+    credit.textContent = `${language === "ru" ? "Фото" : "照片"}: ${stop.visual.credit} · ${stop.visual.license}`;
+    credit.hidden = false;
+    visual.classList.add("has-photo");
+  } else {
+    image.removeAttribute("src");
+    image.alt = "";
+    image.hidden = true;
+    credit.hidden = true;
+    visual.classList.remove("has-photo");
+  }
 
   const sceneTabs = document.querySelector("#scene-tabs");
   sceneTabs.innerHTML = stop.scenes.map((_scene, index) => `<button type="button" data-scene="${index}" aria-label="${index + 1}">${twoDigits(index + 1)}</button>`).join("");
@@ -35,14 +53,13 @@ export function renderStopGuide({ stop, state, copy, onTaskComplete, onStopCompl
   document.querySelector("#task-question").textContent = localized(stop.task.question, language);
   const options = document.querySelector("#task-options");
   const feedback = document.querySelector("#task-feedback");
-  const taskCompleted = state.completedTaskIds.includes(stop.task.id);
   options.innerHTML = stop.task.options.map((option, index) => `<button type="button" data-answer-index="${index}"><b>${String.fromCharCode(65 + index)}</b>　${localized(option, language)}</button>`).join("");
   options.querySelectorAll("button").forEach((button) => button.addEventListener("click", () => {
     const result = evaluateTask(stop.task, button.dataset.answerIndex);
     options.querySelectorAll("button").forEach((item) => item.classList.remove("correct", "wrong"));
     button.classList.add(result.correct ? "correct" : "wrong");
     feedback.textContent = `${result.correct ? copy.correct : copy.wrong}${language === "ru" ? ". " : "。"}${localized(result.explanation, language)}`;
-    if (result.correct) { onTaskComplete(stop.task.id); completeButton.disabled = false; }
+    if (result.correct) onTaskComplete(stop.task.id);
   }));
 
   const suggestions = document.querySelector("#suggested-questions");
@@ -55,7 +72,9 @@ export function renderStopGuide({ stop, state, copy, onTaskComplete, onStopCompl
   }));
 
   const completeButton = document.querySelector("#complete-stop-button");
-  completeButton.disabled = !taskCompleted;
-  completeButton.textContent = stop.routeOrder === 5 ? copy.finish : copy.next;
-  completeButton.onclick = () => onStopComplete(stop.id);
+  completeButton.disabled = false;
+  completeButton.textContent = nextStop
+    ? (language === "ru" ? `Следующая остановка: ${localized(nextStop.name, language)} →` : `下一站：${localized(nextStop.name, language)} →`)
+    : copy.finishMap;
+  completeButton.onclick = () => onNextStop(stop.id);
 }

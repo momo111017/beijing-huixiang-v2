@@ -11,7 +11,7 @@ export const UI_COPY = {
     backRoute: "← Вернуться к маршруту", audioGuide: "Русский аудиогид", transcript: "Текст аудиогида", taskKicker: "ЗАДАНИЕ ОСТАНОВКИ", qaKicker: "ВОПРОСЫ ПО ИСТОЧНИКАМ", qaTitle: "Что ещё узнать об этом месте?",
     archiveKicker: "ПРОВЕРЕННЫЕ МАТЕРИАЛЫ", archiveTitle: "Архив маршрута", archiveIntro: "Факты, изображения и ответы остаются связанными с источниками.",
     privacyKicker: "ГЕОЛОКАЦИЯ", privacyTitle: "Показывать ваше местоположение?", privacyCopy: "Координаты отображаются только на карте, не сохраняются и не отправляются на сервер проекта.", notNow: "Не сейчас", allowLocation: "Разрешить",
-    start: "Начать маршрут", continue: "Продолжить маршрут", enter: "Открыть", next: "Завершить и перейти дальше", finish: "Завершить маршрут", completed: "Пройдено", current: "Сейчас", notStarted: "Не начато",
+    start: "Начать маршрут", continue: "Продолжить маршрут", enter: "Открыть", next: "Следующая остановка", finish: "Завершить маршрут", finishMap: "Завершить маршрут и вернуться к карте", completed: "Пройдено", current: "Сейчас", notStarted: "Не начато",
     source: "Источник", correct: "Верно", wrong: "Попробуйте ещё раз", noAnswer: "В текущей базе нет ответа", routeFinished: "Маршрут завершён. Открыть архив", audioReady: "Готов к воспроизведению", audioError: "Аудио не загрузилось — используйте текст.", mapReady: "Пять объектов загружены", mapError: "Карта недоступна. Список объектов остаётся доступным.", selectedStop: "Выбранный объект",
   },
   zh: {
@@ -25,7 +25,7 @@ export const UI_COPY = {
     backRoute: "← 返回路线", audioGuide: "俄语音频导览", transcript: "音频文字稿", taskKicker: "站点任务", qaKicker: "基于史料继续追问", qaTitle: "还想了解这个地点的什么？",
     archiveKicker: "审核史料", archiveTitle: "路线史料库", archiveIntro: "每条事实、图片与回答都保留来源和版权状态。",
     privacyKicker: "位置权限", privacyTitle: "允许显示你的当前位置吗？", privacyCopy: "坐标只显示在当前地图中，不保存，也不上传到项目服务器。", notNow: "暂不定位", allowLocation: "允许定位",
-    start: "开始路线", continue: "继续路线", enter: "查看", next: "完成本章并前往下一站", finish: "完成整条路线", completed: "已完成", current: "当前", notStarted: "未开始",
+    start: "开始路线", continue: "继续路线", enter: "查看", next: "下一站", finish: "完成整条路线", finishMap: "完成路线并返回地图", completed: "已完成", current: "当前", notStarted: "未开始",
     source: "来源", correct: "回答正确", wrong: "再试一次", noAnswer: "当前资料库暂未收录", routeFinished: "路线已完成，进入史料库", audioReady: "可以播放", audioError: "音频加载失败，请阅读文字稿。", mapReady: "五个真实点位已加载", mapError: "地图暂时不可用，点位列表仍可使用。", selectedStop: "当前点位",
   },
 };
