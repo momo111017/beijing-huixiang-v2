@@ -12,7 +12,7 @@ h1, h2, h3 { text-wrap: balance; }
 .skip-link:focus { transform: translateY(0); }
 :focus-visible { outline: 3px solid rgba(170, 69, 47, 0.48); outline-offset: 3px; }
 .view { min-height: calc(100vh - var(--header-height)); }
-.eyebrow { color: var(--rust); font-size: 11px; font-weight: 900; line-height: 1.4; letter-spacing: .16em; text-transform: uppercase; }
+.eyebrow { color: var(--rust); font-size: 12px; font-weight: 900; line-height: 1.4; letter-spacing: .14em; text-transform: uppercase; }
 .button { min-height: 48px; display: inline-flex; align-items: center; justify-content: center; gap: 12px; padding: 0 22px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--paper-strong); font-weight: 800; }
 .button.primary { border-color: var(--rust); background: var(--rust); color: white; }
 .button.primary:hover { background: var(--rust-dark); }

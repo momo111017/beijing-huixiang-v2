@@ -28,7 +28,7 @@
 - Consumes: `styles/tokens.css` 的圆角令牌与 `styles/layout.css` 的路线 Grid。
 - Produces: 可防止字号、圆角和路线布局回退的静态合约。
 
-- [ ] **Step 1: 写入失败的视觉合约测试**
+- [x] **Step 1: 写入失败的视觉合约测试**
 
 ```js
 test("桌面端使用统一柔化令牌和路线栅格", async () => {
@@ -43,7 +43,7 @@ test("桌面端使用统一柔化令牌和路线栅格", async () => {
 });
 ```
 
-- [ ] **Step 2: 运行单项测试并确认失败**
+- [x] **Step 2: 运行单项测试并确认失败**
 
 Run: `node --test tests/html-contract.test.js`
 
@@ -60,7 +60,7 @@ Expected: FAIL，因为当前圆角仅 4px，路线栏仍为 340px，点位最�
 - Consumes: 现有 `--paper`、`--pine`、`--rust`、`--line` 配色令牌。
 - Produces: `--radius-sm: 8px`、`--radius: 10px`、`--radius-lg: 14px` 和统一低强度 `--shadow`。
 
-- [ ] **Step 1: 更新视觉令牌**
+- [x] **Step 1: 更新视觉令牌**
 
 ```css
 --radius-sm: 8px;
@@ -69,7 +69,7 @@ Expected: FAIL，因为当前圆角仅 4px，路线栏仍为 340px，点位最�
 --shadow: 0 12px 30px rgba(23, 47, 43, 0.1);
 ```
 
-- [ ] **Step 2: 调整全局基础组件**
+- [x] **Step 2: 调整全局基础组件**
 
 ```css
 .eyebrow { font-size: 12px; }
@@ -80,7 +80,7 @@ Expected: FAIL，因为当前圆角仅 4px，路线栏仍为 340px，点位最�
 .qa-module { border-radius: var(--radius-lg); }
 ```
 
-- [ ] **Step 3: 统一地图卡、资料卡、状态和对话框**
+- [x] **Step 3: 统一地图卡、资料卡、状态和对话框**
 
 ```css
 .home-map-card,
@@ -92,7 +92,7 @@ Expected: FAIL，因为当前圆角仅 4px，路线栏仍为 340px，点位最�
 .location-dialog { border-radius: var(--radius-lg); }
 ```
 
-- [ ] **Step 4: 运行合约测试**
+- [x] **Step 4: 运行合约测试**
 
 Run: `node --test tests/html-contract.test.js`
 
@@ -107,7 +107,7 @@ Expected: 圆角令牌断言通过；路线布局断言仍失败。
 - Consumes: `#route-view`、`.route-rail`、`#route-stop-list` 和现有五站 DOM。
 - Produces: 1366—1599px 下 360px 左栏、1600px 以上 380px 左栏、五个均匀填满的点位卡。
 
-- [ ] **Step 1: 改造路线页结构尺寸**
+- [x] **Step 1: 改造路线页结构尺寸**
 
 ```css
 .route-view { grid-template-columns: 360px minmax(0, 1fr); }
@@ -122,7 +122,7 @@ Expected: 圆角令牌断言通过；路线布局断言仍失败。
 }
 ```
 
-- [ ] **Step 2: 放大路线文字与点位卡**
+- [x] **Step 2: 放大路线文字与点位卡**
 
 ```css
 .route-heading > p:last-child { font-size: 13px; }
@@ -134,7 +134,7 @@ Expected: 圆角令牌断言通过；路线布局断言仍失败。
 .route-open-guide { min-height: 52px; }
 ```
 
-- [ ] **Step 3: 统一地图工具和当前点位卡**
+- [x] **Step 3: 统一地图工具和当前点位卡**
 
 ```css
 .map-tools button,
@@ -145,7 +145,7 @@ Expected: 圆角令牌断言通过；路线布局断言仍失败。
 .route-stop-card small { font-size: 12px; }
 ```
 
-- [ ] **Step 4: 运行合约测试**
+- [x] **Step 4: 运行合约测试**
 
 Run: `node --test tests/html-contract.test.js`
 
@@ -161,7 +161,7 @@ Expected: PASS。
 - Consumes: Task 2 产生的圆角令牌和字号下限。
 - Produces: 首页事实栏、地图浮层、导览探索区和史料卡的统一外观。
 
-- [ ] **Step 1: 放大首页与顶部辅助文字**
+- [x] **Step 1: 放大首页与顶部辅助文字**
 
 ```css
 .brand small { font-size: 10px; }
@@ -170,7 +170,7 @@ Expected: PASS。
 .map-titlebar { font-size: 11px; }
 ```
 
-- [ ] **Step 2: 柔化导览小组件**
+- [x] **Step 2: 柔化导览小组件**
 
 ```css
 .scene-tabs button { width: 34px; height: 34px; border-radius: var(--radius-sm); font-size: 12px; }
@@ -179,7 +179,7 @@ Expected: PASS。
 .complete-stop { border-radius: var(--radius); }
 ```
 
-- [ ] **Step 3: 柔化史料卡和筛选状态**
+- [x] **Step 3: 柔化史料卡和筛选状态**
 
 ```css
 .archive-card { border-radius: var(--radius-lg); }
@@ -188,7 +188,7 @@ Expected: PASS。
 .status-chip { font-size: 12px; }
 ```
 
-- [ ] **Step 4: 运行全量自动校验**
+- [x] **Step 4: 运行全量自动校验**
 
 Run: `npm run validate`
 
@@ -203,21 +203,20 @@ Expected: 内容、资产、HTML 和所有 Node 测试全部通过。
 - Consumes: 完整的 CSS 调整。
 - Produces: 三个电脑视口的实际渲染证据。
 
-- [ ] **Step 1: 验收 1366×768 路线页**
+- [x] **Step 1: 验收 1366×768 路线页**
 
 Expected: 左栏 360px，五站卡和底部按钮同屏完整可见；五张卡均匀填满剩余高度；无水平滚动。
 
-- [ ] **Step 2: 验收 1440×900 和 1920×1080**
+- [x] **Step 2: 验收 1440×900 和 1920×1080**
 
 Expected: 1440px 左栏 360px，1920px 左栏 380px；地图、点位卡和主按钮无遮挡。
 
-- [ ] **Step 3: 回归首页、点位导览和史料来源**
+- [x] **Step 3: 回归首页、点位导览和史料来源**
 
 Expected: 三页圆角与字号统一；导览页仍为一屏，追问答案与下一站按钮不重叠；控制台无相关错误或警告。
 
-- [ ] **Step 4: 更新验收记录并提交**
+- [x] **Step 4: 更新验收记录并提交**
 
 Run: `git add styles tests docs && git commit -m "feat: soften V2 desktop UI"`
 
 Expected: 工作区只包含本轮预期文件，提交成功。
-

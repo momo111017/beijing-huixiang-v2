@@ -20,6 +20,8 @@
   --space-3: 24px;
   --space-4: 32px;
   --space-5: 48px;
-  --radius: 4px;
-  --shadow: 0 18px 44px rgba(23, 47, 43, 0.12);
+  --radius-sm: 8px;
+  --radius: 10px;
+  --radius-lg: 14px;
+  --shadow: 0 12px 30px rgba(23, 47, 43, 0.1);
 }
