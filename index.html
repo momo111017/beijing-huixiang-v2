@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#f5f0e6" />
+    <meta name="description" content="Русскоязычный маршрут по индустриальному и культурному наследию Харбина." />
+    <title>Эхо Севера｜Маршрут по Харбину</title>
+    <link rel="stylesheet" href="./styles/tokens.css" />
+    <link rel="stylesheet" href="./styles/base.css" />
+    <link rel="stylesheet" href="./styles/layout.css" />
+    <link rel="stylesheet" href="./styles/components.css" />
+  </head>
+  <body>
+    <a class="skip-link" id="skip-link" href="#main-content">Перейти к содержанию</a>
+    <header class="site-header" id="site-header">
+      <button class="brand" type="button" data-view="home" aria-label="Эхо Севера — на главную">
+        <span class="brand-rails" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span><strong id="brand-name">Эхо Севера</strong><small>HARBIN · ROUTE 01</small></span>
+      </button>
+      <nav class="main-nav" aria-label="Основная навигация">
+        <button class="nav-link active" type="button" data-view="home" data-copy="navHome">Главная</button>
+        <button class="nav-link" type="button" data-view="route" data-copy="navRoute">Мой маршрут</button>
+        <button class="nav-link" type="button" data-view="archive" data-copy="navArchive">Архив</button>
+      </nav>
+      <div class="header-actions">
+        <span class="pilot-label" data-copy="pilot">Харбин · пилот</span>
+        <button class="language-switch" id="language-switch" type="button" aria-label="切换中文">中文</button>
+      </div>
+    </header>
+
+    <main id="main-content" tabindex="-1">
+      <section class="view home-view active" id="home-view" data-view-panel="home" aria-labelledby="home-title">
+        <div class="home-hero">
+          <div class="home-copy">
+            <p class="eyebrow" data-copy="homeKicker">HARBIN · ROUTE 01</p>
+            <h1 id="home-title" data-copy="homeTitle">Русское наследие<br />Харбина</h1>
+            <p class="home-lead" data-copy="homeLead">Пять реальных мест раскрывают историю железной дороги, торговли, архитектуры, памяти и городской жизни.</p>
+            <div class="home-actions">
+              <button class="button primary" id="home-primary-action" type="button" data-view="route">Начать маршрут <span>→</span></button>
+              <span class="home-progress" id="home-progress">0 / 5</span>
+            </div>
+            <div class="home-facts" aria-label="Маршрут в цифрах">
+              <span><b>5</b><small data-copy="factStops">реальных объектов</small></span>
+              <span><b>1</b><small data-copy="factFlagship">подробная экскурсия</small></span>
+              <span><b>RU</b><small data-copy="factAudio">аудио на каждой остановке</small></span>
+            </div>
+          </div>
+          <div class="home-map-shell">
+            <div class="map-titlebar"><span data-copy="mapTitle">Карта маршрута</span><span id="home-map-live-label">BAIDU MAP</span></div>
+            <div class="shared-map" id="home-map" aria-label="Карта маршрута по Харбину"></div>
+            <div class="map-loading" id="home-map-state" role="status"><strong data-copy="mapLoading">Загрузка карты</strong><span data-copy="mapLoadingDetail">Проверяем пять объектов…</span></div>
+            <article class="home-map-card" id="home-map-card"></article>
+            <button class="map-retry" id="home-map-retry" type="button" hidden data-copy="retryMap">Повторить загрузку</button>
+          </div>
+        </div>
+        <section class="home-below" aria-labelledby="route-principle-title">
+          <p class="section-index">01—05</p>
+          <div><p class="eyebrow" data-copy="principleKicker">ЛОГИКА МАРШРУТА</p><h2 id="route-principle-title" data-copy="principleTitle">География ведёт, история объясняет</h2></div>
+          <p data-copy="principleCopy">Порядок остановок уменьшает возвраты. Исторические переходы связывают их в единый рассказ.</p>
+        </section>
+      </section>
+
+      <section class="view route-view" id="route-view" data-view-panel="route" aria-labelledby="route-title" hidden>
+        <aside class="route-rail">
+          <header class="route-heading">
+            <p class="eyebrow" data-copy="routeKicker">МАРШРУТ 01 · ХАРБИН</p>
+            <h1 id="route-title" data-copy="routeTitle">Пять остановок городского диалога</h1>
+            <p data-copy="routeIntro">Выберите объект на карте или продолжите с текущей остановки.</p>
+          </header>
+          <div class="progress-head"><span data-copy="progress">Прогресс</span><strong id="route-progress-count">0 / 5</strong></div>
+          <div class="progress-bar" id="route-progress-bar" aria-label="Прогресс маршрута"></div>
+          <ol class="route-stop-list" id="route-stop-list"></ol>
+          <button class="button primary route-open-guide" id="open-guide-button" type="button" data-copy="openGuide">Открыть экскурсию</button>
+        </aside>
+        <div class="route-map-shell">
+          <div class="shared-map" id="route-map" aria-label="Карта пяти объектов"></div>
+          <div class="map-loading" id="route-map-state" role="status"><strong data-copy="mapLoading">Загрузка карты</strong><span data-copy="mapLoadingDetail">Проверяем пять объектов…</span></div>
+          <div class="map-tools">
+            <button id="locate-button" type="button" aria-pressed="false" data-copy="locate">Показать моё местоположение</button>
+            <button id="follow-button" type="button" aria-pressed="true" data-copy="follow">Следовать за позицией</button>
+          </div>
+          <div class="location-status" id="location-status" role="status" hidden></div>
+          <article class="route-stop-card" id="route-stop-card"></article>
+          <button class="map-retry" id="route-map-retry" type="button" hidden data-copy="retryMap">Повторить загрузку</button>
+        </div>
+      </section>
+
+      <section class="view guide-view" id="guide-view" data-view-panel="guide" aria-labelledby="guide-title" hidden>
+        <div class="guide-visual" id="guide-visual">
+          <button class="back-button" id="back-to-route" type="button" data-view="route" data-copy="backRoute">← Вернуться к маршруту</button>
+          <div class="guide-stamp"><span id="guide-order">01</span><small id="guide-period">1898—1903</small></div>
+          <div class="guide-visual-copy"><p id="guide-role">Железная дорога</p><h1 id="guide-title">Харбинский вокзал</h1></div>
+        </div>
+        <article class="guide-content">
+          <div class="scene-tabs" id="scene-tabs"></div>
+          <p class="eyebrow" id="scene-kicker">ГЛАВА 01</p>
+          <h2 id="scene-title"></h2>
+          <p class="guide-body" id="scene-body"></p>
+          <div class="source-note" id="scene-source"></div>
+          <section class="audio-module" id="audio-module">
+            <div><strong data-copy="audioGuide">Русский аудиогид</strong><span id="audio-status">Готов к воспроизведению</span></div>
+            <audio id="guide-audio" controls preload="metadata"></audio>
+            <details><summary data-copy="transcript">Текст аудиогида</summary><p id="audio-transcript"></p></details>
+          </section>
+          <section class="task-module" id="task-module">
+            <p class="eyebrow" data-copy="taskKicker">ЗАДАНИЕ ОСТАНОВКИ</p>
+            <h3 id="task-question"></h3>
+            <div class="task-options" id="task-options"></div>
+            <div class="task-feedback" id="task-feedback" role="status"></div>
+          </section>
+          <section class="qa-module" id="qa-module">
+            <p class="eyebrow" data-copy="qaKicker">ВОПРОСЫ ПО ИСТОЧНИКАМ</p>
+            <h3 data-copy="qaTitle">Что ещё узнать об этом месте?</h3>
+            <div class="suggested-questions" id="suggested-questions"></div>
+            <article class="qa-answer" id="qa-answer"></article>
+          </section>
+          <button class="button primary complete-stop" id="complete-stop-button" type="button"></button>
+        </article>
+      </section>
+
+      <section class="view archive-view" id="archive-view" data-view-panel="archive" aria-labelledby="archive-title" hidden>
+        <header class="archive-heading"><p class="eyebrow" data-copy="archiveKicker">ПРОВЕРЕННЫЕ МАТЕРИАЛЫ</p><h1 id="archive-title" data-copy="archiveTitle">Архив маршрута</h1><p data-copy="archiveIntro">Факты, изображения и ответы остаются связанными с источниками.</p></header>
+        <div class="archive-filters" id="archive-filters"></div>
+        <div class="archive-grid" id="archive-grid"></div>
+      </section>
+    </main>
+
+    <dialog class="location-dialog" id="location-dialog">
+      <form method="dialog">
+        <p class="eyebrow" data-copy="privacyKicker">ГЕОЛОКАЦИЯ</p>
+        <h2 data-copy="privacyTitle">Показывать ваше местоположение?</h2>
+        <p data-copy="privacyCopy">Координаты отображаются только на карте, не сохраняются и не отправляются на сервер проекта.</p>
+        <div class="dialog-actions"><button value="cancel" data-copy="notNow">Не сейчас</button><button class="button primary" id="allow-location" value="default" data-copy="allowLocation">Разрешить</button></div>
+      </form>
+    </dialog>
+
+    <script src="./config.js"></script>
+    <script type="module" src="./src/app.js"></script>
+  </body>
+</html>

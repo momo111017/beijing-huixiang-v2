@@ -1,0 +1,89 @@
+const bilingual = (ru, zh) => ({ ru, zh });
+
+export const SOURCES = [
+  { id: "route-draft", stopId: "all", title: bilingual("Исторические материалы проекта «Эхо Севера»", "《北境回响》中俄双语史料底稿"), type: bilingual("Материалы команды", "团队史料底稿"), detail: bilingual("Русско-китайский текст, 10 страниц; требует финальной редакторской проверки.", "中俄双语 10 页版本，需最终编辑复核。"), rights: bilingual("Командный материал", "团队材料"), review: "needs-review" },
+  { id: "timeline", stopId: "all", title: bilingual("Хронология маршрута", "路线时间线"), type: bilingual("Рабочая таблица", "团队时间线表"), detail: bilingual("1898—современность; ключевые события связаны с пятью объектами.", "1898 年至今，关键事件对应五个点位。"), rights: bilingual("Командный материал", "团队材料"), review: "reviewed" },
+  { id: "railway-official", stopId: "harbin-station", title: bilingual("История Китайско-Восточной железной дороги", "中东铁路文史资料"), type: bilingual("Официальный железнодорожный источник", "国铁官方资料"), detail: "http://wap.china-railway.com.cn/tlwh/tlbwg/tllwjhsh/201812/t20181228_91951.html", rights: bilingual("Требуется указание источника", "需标注来源"), review: "reviewed" },
+  { id: "archive-railway", stopId: "harbin-station", title: bilingual("Архив КВЖД в Харбине", "哈尔滨市档案馆中东铁路专题"), type: bilingual("Городской архив", "市级档案馆"), detail: "https://www.hrbdag.org.cn/rdzt/tsdaclz/zdtljs/", rights: bilingual("Требуется указание источника", "需标注来源"), review: "reviewed" },
+  { id: "qiulin-official", stopId: "qiulin-company", title: bilingual("История торгового дома «Чурин и Ко»", "哈尔滨秋林集团发展史"), type: bilingual("Материалы предприятия", "企业官方资料"), detail: "http://www.qlgroup.com.cn/index3.html", rights: bilingual("Требуется указание источника", "需标注来源"), review: "reviewed" },
+  { id: "qiulin-archive", stopId: "qiulin-company", title: bilingual("Архив: сто лет компании «Чурин»", "黑龙江省档案馆百年秋林专题"), type: bilingual("Провинциальный архив", "省级档案馆"), detail: "http://hljsdag.org.cn/index.php?m=home&c=View&a=index&aid=1797", rights: bilingual("Требуется указание источника", "需标注来源"), review: "reviewed" },
+  { id: "sophia-heritage", stopId: "saint-sophia", title: bilingual("Материалы объекта культурного наследия", "全国重点文物保护单位资料"), type: bilingual("Документы по охране памятников", "文保单位资料"), detail: bilingual("Архитектурная история и охранный статус собора.", "教堂建筑史及文保状态。"), rights: bilingual("Требуется указание источника", "需标注来源"), review: "reviewed" },
+  { id: "memorial-record", stopId: "soviet-memorial", title: bilingual("Мемориал советским воинам на площади Музея", "博物馆广场苏联红军烈士纪念碑资料"), type: bilingual("Туристический и натурный источник", "官方文旅与实物考证"), detail: "https://m.heb.bendibao.com/jingdian/sulianhongjunlieshijinianta/content/", rights: bilingual("Не смешивать с памятником у вокзала", "不得与哈尔滨站广场纪念塔混淆"), review: "needs-review" },
+  { id: "park-official", stopId: "stalin-park", title: bilingual("История парка на набережной", "斯大林公园历史资料"), type: bilingual("Местные СМИ и городские архивы", "地方官媒与园林档案"), detail: "https://news.sina.cn/sa/2009-07-20/detail-ikknscsk5001649.d.html", rights: bilingual("Требуется указание источника", "需标注来源"), review: "reviewed" },
+];
+
+export const QUESTIONS = [
+  { id: "station-origin", stopId: "harbin-station", q: bilingual("Почему вокзал стал отправной точкой истории города?", "为什么哈尔滨站成为城市历史的起点？"), a: bilingual("Временная станция Циньцзяган появилась в 1899 году как центральный узел КВЖД. Потоки людей, технологий и торговли, связанные с железной дорогой, стали основой современного развития Харбина.", "1899 年秦家岗临时车站作为中东铁路枢纽出现。铁路带来的人口、技术和商贸流动，构成哈尔滨近代城市发展的基础。"), sourceIds: ["route-draft", "railway-official", "archive-railway"] },
+  { id: "station-date", stopId: "harbin-station", q: bilingual("В чём разница между 1899 и 1903 годами?", "1899 年和 1903 年分别意味着什么？"), a: bilingual("В 1899 году была построена временная станция Циньцзяган. В 1903 году, после открытия движения по КВЖД, станция получила название «Харбин» и статус станции первого класса.", "1899 年落成的是秦家岗临时站房；1903 年中东铁路通车后，车站正式定名哈尔滨站，并成为一等站。"), sourceIds: ["timeline", "railway-official"] },
+  { id: "station-sources", stopId: "harbin-station", q: bilingual("Какие источники подтверждают этот рассказ?", "哪些资料支持这段讲解？"), a: bilingual("Основу составляют материалы железнодорожной истории, архив КВЖД в Харбине, командная хронология и двуязычный исторический черновик.", "依据包括国铁铁路文史资料、哈尔滨市档案馆中东铁路专题、团队时间线与中俄双语史料底稿。"), sourceIds: ["railway-official", "archive-railway", "timeline"] },
+  { id: "memorial-place", stopId: "soviet-memorial", q: bilingual("Какой именно памятник входит в маршрут?", "路线中的纪念碑究竟是哪一座？"), a: bilingual("Маршрут относится к мемориалу советским воинам на площади у Музея в районе Наньгань. Его нельзя смешивать с другим советским памятником у Харбинского вокзала.", "路线所指的是南岗博物馆广场前的苏联红军烈士纪念碑，不能与哈尔滨站广场的另一座苏军纪念塔混淆。"), sourceIds: ["memorial-record", "route-draft"] },
+  { id: "memorial-year", stopId: "soviet-memorial", q: bilingual("Почему 1945 год важен для этого места?", "为什么 1945 年对这里很重要？"), a: bilingual("Мемориал был возведён с августа по ноябрь 1945 года в память о советских воинах, погибших в боях за освобождение Северо-Восточного Китая.", "纪念碑于 1945 年 8 月至 11 月间建成，用于纪念在解放中国东北作战中牺牲的苏联红军官兵。"), sourceIds: ["timeline", "memorial-record"] },
+  { id: "qiulin-life", stopId: "qiulin-company", q: bilingual("Как «Чурин и Ко» вошёл в повседневную жизнь Харбина?", "秋林公司怎样进入哈尔滨人的日常生活？"), a: bilingual("Торговый дом развивал европейскую систему универмагов и пищевое производство. Хлеб, колбаса и квас стали частью городской гастрономической культуры.", "秋林引入欧式百货经营体系，并发展面包、红肠、格瓦斯等食品生产，使俄式饮食进入城市日常。"), sourceIds: ["qiulin-official", "qiulin-archive", "route-draft"] },
+  { id: "qiulin-transfer", stopId: "qiulin-company", q: bilingual("Была ли компания передана Китаю бесплатно?", "秋林公司是无偿移交给中国的吗？"), a: bilingual("Нет. Рабочие материалы подчёркивают, что передача 1953 года была возмездной коммерческой сделкой, подтверждённой официальными документами.", "不是。现有资料明确要求采用“1953 年有偿商业移交”的表述，并以官方签约档案等材料为依据。"), sourceIds: ["qiulin-archive", "route-draft"] },
+  { id: "sophia-stages", stopId: "saint-sophia", q: bilingual("Почему у собора две даты строительства?", "为什么圣索菲亚教堂有两个建造阶段？"), a: bilingual("В 1907 году появилась военная походная церковь. Каменный собор строился в 1923—1932 годах на средства русских купцов и православной общины. Эти этапы нельзя смешивать.", "1907 年出现的是随军教堂；1923—1932 年由俄商与东正教社群推动建成大型石构教堂，两个阶段的建造主体不能混同。"), sourceIds: ["sophia-heritage", "route-draft", "timeline"] },
+  { id: "sophia-today", stopId: "saint-sophia", q: bilingual("Как собор используется сегодня?", "教堂今天怎样使用？"), a: bilingual("После реставрации 1997 года здание стало Харбинским музеем архитектурного искусства и примером современного использования исторического наследия.", "1997 年修复后，教堂改造为哈尔滨建筑艺术馆，成为历史建筑活化利用的代表。"), sourceIds: ["sophia-heritage", "timeline"] },
+  { id: "park-name", stopId: "stalin-park", q: bilingual("Когда парк получил современное название?", "斯大林公园何时获得现在的名称？"), a: bilingual("Прибрежный парк был расширен и получил название «Парк Сталина» в 1953 году, в период интенсивного советско-китайского сотрудничества.", "江畔公园在 1953 年中苏合作密切时期扩建并正式更名为斯大林公园。"), sourceIds: ["park-official", "timeline", "route-draft"] },
+  { id: "park-ending", stopId: "stalin-park", q: bilingual("Почему маршрут заканчивается на набережной?", "为什么路线在滨江空间结束？"), a: bilingual("Финал переносит рассказ от железных дорог, торговли и войны к мирному городскому пространству, которым жители пользуются сегодня.", "终点把铁路、商贸和战争的宏大叙事带回今天仍被市民使用的和平公共空间。"), sourceIds: ["park-official", "route-draft"] },
+];
+
+export const ROUTE = {
+  id: "harbin-russian-heritage-v2",
+  title: bilingual("Русское наследие Харбина", "百年俄韵·冰城共生"),
+  defaultLanguage: "ru",
+  routeOrderMode: "geography-first",
+  stops: [
+    {
+      id: "harbin-station", routeOrder: 1, positionWgs84: [126.6254465, 45.7600422], coordinateStatus: "needs-review", period: "1898—1903",
+      name: bilingual("Харбинский вокзал", "哈尔滨站"), role: bilingual("Железная дорога и рождение города", "铁路与城市诞生"), duration: 6,
+      transition: bilingual("От транспортного узла маршрут переходит к памяти о переломном 1945 годе.", "从交通枢纽出发，下一站转入 1945 年的共同战争记忆。"),
+      scenes: [
+        { id: "arrival", title: bilingual("Железная дорога и рождение города", "铁路与城市诞生"), body: bilingual("Предшественником вокзала была временная станция Циньцзяган. Её деревянное здание появилось в 1899 году как центральный узел Китайско-Восточной железной дороги. В 1903 году, после открытия движения, станция получила название «Харбин» и стала важными воротами города.", "哈尔滨站的前身是秦家岗临时车站。1899 年木板站房作为中东铁路枢纽出现；1903 年铁路通车后，车站正式定名哈尔滨站，成为城市的重要入口。"), sourceIds: ["railway-official", "archive-railway"] },
+        { id: "exchange", title: bilingual("Люди, технологии и новые улицы", "人员、技术与新街区"), body: bilingual("Через вокзал прибывали инженеры, рабочие, купцы и переселенцы. Вместе с ними в Харбин приходили технологии, торговые связи и новые принципы планировки. Поэтому история маршрута начинается не со здания как такового, а с движения людей вокруг него.", "工程师、工人、商人和侨民经由车站进入哈尔滨，同时带来技术、商贸网络和新的城市规划方式。路线从这里开始，关注的不只是站房，而是围绕铁路发生的人口流动。"), sourceIds: ["route-draft", "timeline"] },
+        { id: "today", title: bilingual("Старый вокзал и современный Харбин", "旧站与今日哈尔滨"), body: bilingual("Современное здание возвращает отдельные мотивы исторического облика. Сравнивая старые изображения с нынешним входом и окружающими улицами, можно увидеть, как город сохраняет символы железнодорожного прошлого, продолжая жить как современный транспортный центр.", "今天的站房重新呈现了部分历史建筑意象。把旧照片与现在的入口、街道相对照，可以看到哈尔滨如何保留铁路时代符号，同时继续承担现代交通枢纽功能。"), sourceIds: ["route-draft", "archive-railway"] },
+      ],
+      audio: { src: "./assets/audio/harbin-station-ru.mp3", transcript: "./assets/transcripts/harbin-station-ru.txt", reviewStatus: "needs-review" },
+      task: { id: "harbin-station-compare", question: bilingual("Какая дата относится к официальному названию «Харбинский вокзал»?", "哈尔滨站正式定名对应哪一年？"), options: [bilingual("1898", "1898 年"), bilingual("1899", "1899 年"), bilingual("1903", "1903 年")], correctIndex: 2, explanation: bilingual("В 1899 году появилась временная станция, а название «Харбинский вокзал» закрепилось в 1903 году.", "1899 年是临时站房，1903 年中东铁路通车后正式定名哈尔滨站。") },
+      questionIds: ["station-origin", "station-date", "station-sources"], sourceIds: ["railway-official", "archive-railway", "timeline"]
+    },
+    {
+      id: "soviet-memorial", routeOrder: 2, positionWgs84: [126.6368452, 45.7555923], coordinateStatus: "needs-review", period: "1945",
+      name: bilingual("Мемориал советским воинам", "苏联红军烈士纪念碑"), role: bilingual("Общая память о войне", "共同战争记忆"), duration: 3,
+      transition: bilingual("От военной памяти маршрут возвращается к мирной торговой жизни города.", "离开战争记忆，路线重新回到城市日常商业与文化交流。"),
+      scenes: [{ id: "memory", title: bilingual("Память на площади Музея", "博物馆广场上的共同记忆"), body: bilingual("Мемориал на площади у Музея района Наньгань был возведён с августа по ноябрь 1945 года. Он посвящён советским воинам, погибшим в боях за освобождение Северо-Восточного Китая. Важно не смешивать этот объект с другим советским памятником у вокзала.", "南岗博物馆广场前的苏联红军烈士纪念碑建于 1945 年 8 月至 11 月，用于纪念在解放中国东北作战中牺牲的苏联红军官兵。需要特别注意，它不是哈尔滨站广场的另一座苏军纪念塔。"), sourceIds: ["memorial-record", "route-draft"] }],
+      audio: { src: "./assets/audio/soviet-memorial-ru.mp3", transcript: "./assets/transcripts/soviet-memorial-ru.txt", reviewStatus: "needs-review" },
+      task: { id: "memorial-distinguish", question: bilingual("Где находится объект этого маршрута?", "本路线中的纪念碑位于哪里？"), options: [bilingual("У Харбинского вокзала", "哈尔滨站广场"), bilingual("На площади у Музея в Наньгане", "南岗博物馆广场"), bilingual("В Парке Сталина", "斯大林公园")], correctIndex: 1, explanation: bilingual("Маршрут относится к мемориалу на площади у Музея в районе Наньгань.", "路线点位是南岗博物馆广场前的纪念碑。") },
+      questionIds: ["memorial-place", "memorial-year"], sourceIds: ["memorial-record", "timeline"]
+    },
+    {
+      id: "qiulin-company", routeOrder: 3, positionWgs84: [126.6400457, 45.7589318], coordinateStatus: "needs-review", period: "1900—1953",
+      name: bilingual("Торговый дом «Чурин и Ко»", "秋林公司"), role: bilingual("Торговля входит в повседневность", "商业进入城市日常"), duration: 3,
+      transition: bilingual("Торговля создала спрос на новые общественные и культурные пространства.", "商业与侨民生活继续催生新的公共文化空间。"),
+      scenes: [{ id: "commerce", title: bilingual("От железной дороги к городскому быту", "从铁路物流到城市生活"), body: bilingual("В 1900 году русский купец Иван Чурин открыл в Харбине филиал торгового дома. Железнодорожная логистика поддержала универмаг и пищевые мастерские. Хлеб, колбаса и квас стали частью городской культуры. Передача компании Китаю в 1953 году была возмездной, а не бесплатной.", "1900 年，俄商伊万·秋林在哈尔滨设立分行。铁路物流支撑了百货经营与食品作坊，大列巴、红肠和格瓦斯逐渐进入城市生活。1953 年秋林移交属于有偿商业移交，并非无偿赠送。"), sourceIds: ["qiulin-official", "qiulin-archive"] }],
+      audio: { src: "./assets/audio/qiulin-company-ru.mp3", transcript: "./assets/transcripts/qiulin-company-ru.txt", reviewStatus: "needs-review" },
+      task: { id: "qiulin-fact", question: bilingual("Как корректно описать передачу компании в 1953 году?", "1953 年秋林公司移交应如何准确表述？"), options: [bilingual("Безвозмездный подарок", "无偿赠送"), bilingual("Возмездная коммерческая передача", "有偿商业移交"), bilingual("Закрытие предприятия", "企业关闭")], correctIndex: 1, explanation: bilingual("Рабочие материалы требуют формулировки «возмездная коммерческая передача».", "现有审核口径明确采用“有偿商业移交”。") },
+      questionIds: ["qiulin-life", "qiulin-transfer"], sourceIds: ["qiulin-official", "qiulin-archive"]
+    },
+    {
+      id: "saint-sophia", routeOrder: 4, positionWgs84: [126.6212774, 45.7681948], coordinateStatus: "needs-review", period: "1907—1932",
+      name: bilingual("Софийский собор", "圣索菲亚大教堂"), role: bilingual("Архитектура формирует облик города", "建筑塑造城市风貌"), duration: 3,
+      transition: bilingual("После архитектурного символа маршрут выходит к открытому пространству набережной.", "离开建筑地标，路线最终走向松花江畔的公共生活。"),
+      scenes: [{ id: "architecture", title: bilingual("Два этапа строительства", "两个不同的建造阶段"), body: bilingual("История собора началась в 1907 году с походной церкви для российского гарнизона. Каменный собор строился с 1923 по 1932 год на средства русских купцов и православной общины. Эти этапы различаются по времени и инициаторам. После реставрации 1997 года здание стало музеем архитектурного искусства.", "圣索菲亚教堂的历史始于 1907 年的随军教堂；1923—1932 年，俄商与东正教社群推动建成大型石构教堂。两个阶段的建造时间和主体不同。1997 年修复后，建筑成为哈尔滨建筑艺术馆。"), sourceIds: ["sophia-heritage", "timeline"] }],
+      audio: { src: "./assets/audio/saint-sophia-ru.mp3", transcript: "./assets/transcripts/saint-sophia-ru.txt", reviewStatus: "needs-review" },
+      task: { id: "sophia-stages-task", question: bilingual("Кто главным образом поддержал строительство каменного собора 1923—1932 годов?", "1923—1932 年大型石构教堂主要由谁推动？"), options: [bilingual("Русские купцы и православная община", "俄商与东正教社群"), bilingual("Только железнодорожная армия", "仅铁路驻军"), bilingual("Городской парк", "城市园林部门")], correctIndex: 0, explanation: bilingual("Первую церковь построили военные, а каменный собор поддержали купцы и церковная община.", "初代随军教堂由俄军修建，大型石构教堂主要由俄商和教会社群推动。") },
+      questionIds: ["sophia-stages", "sophia-today"], sourceIds: ["sophia-heritage", "timeline"]
+    },
+    {
+      id: "stalin-park", routeOrder: 5, positionWgs84: [126.6102565, 45.7784887], coordinateStatus: "needs-review", period: "1938—сегодня",
+      name: bilingual("Парк Сталина", "斯大林公园"), role: bilingual("История возвращается в городскую жизнь", "历史回到城市日常"), duration: 3,
+      transition: bilingual("Здесь маршрут заканчивается, но городская память продолжается в повседневной жизни.", "路线在这里结束，但城市记忆继续存在于日常生活中。"),
+      scenes: [{ id: "river-life", title: bilingual("Мирное пространство на берегу Сунгари", "松花江畔的和平公共空间"), body: bilingual("Территория парка связана с бывшим грузовым причалом КВЖД. Прибрежный парк появился в 1938 году, а в 1953 году был расширен и получил нынешнее название. Финал маршрута переводит рассказ от железных дорог и войны к общей набережной, которой жители пользуются сегодня.", "公园所在区域与中东铁路货运码头有关。江畔公园建于 1938 年，1953 年扩建并获得现在的名称。路线在这里从铁路与战争的宏大叙事回到今天仍被市民共同使用的滨江空间。"), sourceIds: ["park-official", "route-draft"] }],
+      audio: { src: "./assets/audio/stalin-park-ru.mp3", transcript: "./assets/transcripts/stalin-park-ru.txt", reviewStatus: "needs-review" },
+      task: { id: "park-ending-task", question: bilingual("Почему парк выбран финальной остановкой?", "为什么斯大林公园被选为终点？"), options: [bilingual("Чтобы закончить маршрутом покупок", "为了结束购物路线"), bilingual("Чтобы вернуться к мирной городской жизни", "为了回到和平城市生活"), bilingual("Потому что здесь находится вокзал", "因为车站在这里")], correctIndex: 1, explanation: bilingual("Набережная завершает историю общим пространством повседневной жизни.", "滨江公共空间让路线最终回到和平的城市日常。") },
+      questionIds: ["park-name", "park-ending"], sourceIds: ["park-official", "route-draft"]
+    },
+  ],
+};
+
+export const getStop = (id) => ROUTE.stops.find((stop) => stop.id === id) || ROUTE.stops[0];
+export const getQuestion = (id) => QUESTIONS.find((question) => question.id === id);
+export const getSource = (id) => SOURCES.find((source) => source.id === id);
