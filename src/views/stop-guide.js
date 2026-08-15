@@ -65,6 +65,7 @@ export function renderStopGuide({ stop, nextStop, state, copy, onTaskComplete, o
   const suggestions = document.querySelector("#suggested-questions");
   suggestions.innerHTML = suggestQuestions(stop.id).map((question) => `<button type="button" data-question-id="${question.id}">${localized(question.q, language)}</button>`).join("");
   const answer = document.querySelector("#qa-answer");
+  answer.replaceChildren();
   suggestions.querySelectorAll("button").forEach((button) => button.addEventListener("click", () => {
     const result = answerQuestion(button.dataset.questionId, language);
     const linkLabel = language === "ru" ? "ссылка" : "链接";
