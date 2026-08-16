@@ -51,7 +51,8 @@ export function renderStopGuide({ stop, nextStop, state, copy, onTaskComplete, o
     document.querySelector("#scene-kicker").textContent = `${language === "ru" ? "ГЛАВА" : "章节"} ${twoDigits(index + 1)}`;
     document.querySelector("#scene-title").textContent = localized(scene.title, language);
     document.querySelector("#scene-body").textContent = localized(scene.body, language);
-    document.querySelector("#scene-source").textContent = `${copy.source}: ${scene.sourceIds.map((id) => localized(getSource(id)?.title, language)).filter(Boolean).join("；")}`;
+    const sourceSeparator = language === "ru" ? "; " : "；";
+    document.querySelector("#scene-source").textContent = `${copy.source}: ${scene.sourceIds.map((id) => localized(getSource(id)?.title, language)).filter(Boolean).join(sourceSeparator)}`;
   };
   sceneTabs.querySelectorAll("button").forEach((button) => button.addEventListener("click", () => updateScene(Number(button.dataset.scene))));
   updateScene(activeSceneIndex);

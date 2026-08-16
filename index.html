@@ -17,7 +17,7 @@
     <header class="site-header" id="site-header">
       <button class="brand" type="button" data-view="home" aria-label="Эхо Севера — на главную">
         <span class="brand-rails" aria-hidden="true"><i></i><i></i><i></i></span>
-        <span><strong id="brand-name">Эхо Севера</strong><small>HARBIN · ROUTE 01</small></span>
+        <span><strong id="brand-name">Эхо Севера</strong><small>ХАРБИН · МАРШРУТ 01</small></span>
       </button>
       <nav class="main-nav" aria-label="Основная навигация">
         <button class="nav-link active" type="button" data-view="home" data-copy="navHome">Главная</button>
@@ -33,18 +33,18 @@
       <section class="view home-view active" id="home-view" data-view-panel="home" aria-labelledby="home-title">
         <div class="home-hero">
           <div class="home-copy">
-            <p class="eyebrow" data-copy="homeKicker">HARBIN · ROUTE 01</p>
+            <p class="eyebrow" data-copy="homeKicker">ХАРБИН · МАРШРУТ 01</p>
             <h1 id="home-title" data-copy="homeTitle">Русское наследие<br />Харбина</h1>
-            <p class="home-lead" data-copy="homeLead">Пять реальных мест раскрывают историю железной дороги, торговли, архитектуры, памяти и городской жизни.</p>
+            <p class="home-lead" data-copy="homeLead">Пять знаковых мест. Маршрут через железную дорогу, первые торговые дома, историческую архитектуру, мемориал памяти и парк у набережной раскроет для вас век русско-китайского взаимодействия в Харбине.</p>
             <div class="home-actions">
               <button class="button primary" id="home-primary-action" type="button" data-view="route">Начать маршрут <span>→</span></button>
               <span class="home-progress" id="home-progress">0 / 5</span>
             </div>
           </div>
           <div class="home-map-shell">
-            <div class="map-titlebar"><span data-copy="mapTitle">Карта маршрута</span><span id="home-map-live-label">BAIDU MAP</span></div>
+            <div class="map-titlebar"><span data-copy="mapTitle">Карта маршрута</span><span id="home-map-live-label">КАРТА БАЙДУ</span></div>
             <div class="shared-map" id="home-map" aria-label="Карта маршрута по Харбину"></div>
-            <div class="map-loading" id="home-map-state" role="status"><strong data-copy="mapLoading">Загрузка карты</strong><span data-copy="mapLoadingDetail">Проверяем пять объектов…</span></div>
+            <div class="map-loading" id="home-map-state" role="status"><strong data-copy="mapLoading">Загрузка карты</strong><span data-copy="mapLoadingDetail">Проверяем пять точек маршрута…</span></div>
             <article class="home-map-card" id="home-map-card"></article>
             <button class="map-retry" id="home-map-retry" type="button" hidden data-copy="retryMap">Повторить загрузку</button>
           </div>
@@ -61,19 +61,19 @@
           <header class="route-heading">
             <p class="eyebrow" data-copy="routeKicker">МАРШРУТ 01 · ХАРБИН</p>
             <h1 id="route-title" data-copy="routeTitle">Пять остановок городского диалога</h1>
-            <p data-copy="routeIntro">Выберите объект на карте или продолжите с текущей остановки.</p>
+            <p data-copy="routeIntro">Выберите точку на карте или продолжите маршрут с текущей остановки.</p>
           </header>
-          <div class="progress-head"><span data-copy="progress">Прогресс</span><strong id="route-progress-count">0 / 5</strong></div>
+          <div class="progress-head"><span data-copy="progress">Прогресс маршрута</span><strong id="route-progress-count">0 / 5</strong></div>
           <div class="progress-bar" id="route-progress-bar" aria-label="Прогресс маршрута"></div>
           <ol class="route-stop-list" id="route-stop-list"></ol>
-          <button class="button primary route-open-guide" id="open-guide-button" type="button" data-copy="openGuide">Открыть экскурсию</button>
+          <button class="button primary route-open-guide" id="open-guide-button" type="button" data-copy="openGuide">Открыть гид</button>
         </aside>
         <div class="route-map-shell">
           <div class="shared-map" id="route-map" aria-label="Карта пяти объектов"></div>
-          <div class="map-loading" id="route-map-state" role="status"><strong data-copy="mapLoading">Загрузка карты</strong><span data-copy="mapLoadingDetail">Проверяем пять объектов…</span></div>
+          <div class="map-loading" id="route-map-state" role="status"><strong data-copy="mapLoading">Загрузка карты</strong><span data-copy="mapLoadingDetail">Проверяем пять точек маршрута…</span></div>
           <div class="map-tools">
             <button id="locate-button" type="button" aria-pressed="false" data-copy="locate">Показать моё местоположение</button>
-            <button id="follow-button" type="button" aria-pressed="true" data-copy="follow">Следовать за позицией</button>
+            <button id="follow-button" type="button" aria-pressed="true" data-copy="follow">Следить за местоположением</button>
           </div>
           <div class="location-status" id="location-status" role="status" hidden></div>
           <article class="route-stop-card" id="route-stop-card"></article>
@@ -103,7 +103,7 @@
           </section>
           <div class="guide-explore-grid" id="guide-explore-grid">
             <section class="task-module" id="task-module">
-              <p class="eyebrow" data-copy="taskKicker">ЗАДАНИЕ ОСТАНОВКИ</p>
+              <p class="eyebrow" data-copy="taskKicker">ЗАДАНИЕ НА ОСТАНОВКЕ</p>
               <h3 id="task-question"></h3>
               <div class="task-options" id="task-options"></div>
               <div class="task-feedback" id="task-feedback" role="status"></div>

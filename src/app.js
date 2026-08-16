@@ -42,11 +42,11 @@ function setMapState(kind, title, detail) {
 
 function refreshMapStateCopy() {
   if (mapStatusKind === "success") {
-    setMapState("success", copy().mapReady, state.language === "ru" ? "Карта использует реальные координаты пяти объектов." : "首页与路线页共用五个真实点位。");
+    setMapState("success", copy().mapReady, state.language === "ru" ? "Карта использует реальные координаты пяти точек маршрута." : "首页与路线页共用五个真实点位。");
     return;
   }
   if (mapStatusKind === "error") {
-    setMapState("error", copy().mapError, state.language === "ru" ? "Проверьте сеть, AK и Referer. Пять объектов доступны в списке." : "请检查网络、AK 和 Referer 白名单，五个点位仍可从列表进入。");
+    setMapState("error", copy().mapError, state.language === "ru" ? "Проверьте сеть, AK и Referer. Пять точек маршрута доступны в списке." : "请检查网络、AK 和 Referer 白名单，五个点位仍可从列表进入。");
     return;
   }
   setMapState("", copy().mapLoading, copy().mapLoadingDetail);
@@ -159,11 +159,11 @@ async function initMap() {
     mapController.selectStop(selectedStopId, { pan: false });
     mapReady = true;
     createLocation(BMap);
-    setMapState("success", copy().mapReady, state.language === "ru" ? "Карта использует реальные координаты пяти объектов." : "首页与路线页共用五个真实点位。" );
+    setMapState("success", copy().mapReady, state.language === "ru" ? "Карта использует реальные координаты пяти точек маршрута." : "首页与路线页共用五个真实点位。" );
   } catch (error) {
     console.error(error);
     mapReady = false;
-    setMapState("error", copy().mapError, state.language === "ru" ? "Проверьте сеть, AK и Referer. Пять объектов доступны в списке." : "请检查网络、AK 和 Referer 白名单，五个点位仍可从列表进入。" );
+    setMapState("error", copy().mapError, state.language === "ru" ? "Проверьте сеть, AK и Referer. Пять точек маршрута доступны в списке." : "请检查网络、AK 和 Referer 白名单，五个点位仍可从列表进入。" );
   }
 }
 
