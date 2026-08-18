@@ -21,6 +21,7 @@ let mapController = null;
 let locationController = null;
 let mapReady = false;
 let mapStatusKind = "loading";
+let lastMapError = null;
 
 const copy = () => UI_COPY[state.language];
 const selectedStop = () => getStop(selectedStopId);
@@ -40,13 +41,32 @@ function setMapState(kind, title, detail) {
   document.querySelector("#route-map-retry").hidden = retryHidden;
 }
 
+function mapErrorDetail(error = lastMapError) {
+  const details = state.language === "ru"
+    ? {
+      "missing-ak": "Не найден ключ карты. Проверьте config.js; пять точек маршрута доступны в списке.",
+      network: "Не удалось связаться с Baidu JSAPI. Проверьте сеть и Referer; пять точек маршрута доступны в списке.",
+      timeout: "Baidu JSAPI не ответил вовремя. Повторите загрузку; пять точек маршрута доступны в списке.",
+      unavailable: "Baidu JSAPI не вернул объект карты. Проверьте AK и Referer; пять точек маршрута доступны в списке.",
+    }
+    : {
+      "missing-ak": "未找到地图 AK，请检查 config.js；五个点位仍可从列表进入。",
+      network: "百度地图脚本网络加载失败，请检查网络和 Referer 白名单；五个点位仍可从列表进入。",
+      timeout: "百度地图脚本响应超时，请重试；五个点位仍可从列表进入。",
+      unavailable: "百度地图 API 未返回可用对象，请检查 AK 和 Referer 白名单；五个点位仍可从列表进入。",
+    };
+  return details[error?.code] || (state.language === "ru"
+    ? "Проверьте сеть, AK и Referer. Пять точек маршрута доступны в списке."
+    : "请检查网络、AK 和 Referer 白名单，五个点位仍可从列表进入。");
+}
+
 function refreshMapStateCopy() {
   if (mapStatusKind === "success") {
     setMapState("success", copy().mapReady, state.language === "ru" ? "Карта использует реальные координаты пяти точек маршрута." : "首页与路线页共用五个真实点位。");
     return;
   }
   if (mapStatusKind === "error") {
-    setMapState("error", copy().mapError, state.language === "ru" ? "Проверьте сеть, AK и Referer. Пять точек маршрута доступны в списке." : "请检查网络、AK 和 Referer 白名单，五个点位仍可从列表进入。");
+    setMapState("error", copy().mapError, mapErrorDetail());
     return;
   }
   setMapState("", copy().mapLoading, copy().mapLoadingDetail);
@@ -151,6 +171,7 @@ function createLocation(BMap) {
 
 async function initMap() {
   setMapState("", copy().mapLoading, copy().mapLoadingDetail);
+  lastMapError = null;
   try {
     const BMap = await loadBaiduMap(appConfig.baiduAk);
     mapController = createMapController({ BMap, stops: ROUTE.stops, onStopSelect: selectStop });
@@ -158,12 +179,14 @@ async function initMap() {
     mapController.mount("home", "home-map", { compact: true });
     mapController.selectStop(selectedStopId, { pan: false });
     mapReady = true;
+    lastMapError = null;
     createLocation(BMap);
     setMapState("success", copy().mapReady, state.language === "ru" ? "Карта использует реальные координаты пяти точек маршрута." : "首页与路线页共用五个真实点位。" );
   } catch (error) {
     console.error(error);
     mapReady = false;
-    setMapState("error", copy().mapError, state.language === "ru" ? "Проверьте сеть, AK и Referer. Пять точек маршрута доступны в списке." : "请检查网络、AK 和 Referer 白名单，五个点位仍可从列表进入。" );
+    lastMapError = error;
+    setMapState("error", copy().mapError, mapErrorDetail(error));
   }
 }
 

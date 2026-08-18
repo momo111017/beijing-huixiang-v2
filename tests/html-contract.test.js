@@ -15,7 +15,7 @@ test("游客端俄语默认并只暴露精简主导航", async () => {
   assert.doesNotMatch(html, /home-facts|factStops|factFlagship|factAudio/);
 });
 
-test("V1 俄语反馈中的英文混用和术语问题不再出现", async () => {
+test("V3 俄语反馈中的英文混用和术语问题不再出现", async () => {
   const [html, uiCopy, routeContent, routeWorkspace, stopGuide, memorialTranscript, parkTranscript] = await Promise.all([
     readFile(new URL("../index.html", import.meta.url), "utf8"),
     readFile(new URL("../src/data/ui-copy.js", import.meta.url), "utf8"),
@@ -26,15 +26,15 @@ test("V1 俄语反馈中的英文混用和术语问题不再出现", async () =>
     readFile(new URL("../assets/transcripts/stalin-park-ru.txt", import.meta.url), "utf8"),
   ]);
   assert.match(uiCopy, /русско-китайского взаимодействия в Харбине/);
-  assert.match(uiCopy, /openGuide:\s*"Открыть гид"/);
+  assert.match(uiCopy, /openGuide:\s*"Открыть экскурсию"/);
   assert.match(html, /КАРТА БАЙДУ/);
-  assert.doesNotMatch(`${html}\n${uiCopy}`, /HARBIN|ROUTE 01|BAIDU MAP|Открыть экскурсию|Следовать за позицией/);
+  assert.doesNotMatch(`${html}\n${uiCopy}`, /HARBIN|ROUTE 01|BAIDU MAP|Следовать за позицией/);
   assert.match(routeWorkspace, /\$\{stop\.duration\} мин/);
   assert.doesNotMatch(routeWorkspace, /\$\{stop\.duration\} min/);
   assert.match(stopGuide, /language === "ru" \? "; " : "；"/);
   assert.doesNotMatch(routeContent, /1898—современность|1938—сегодня|закончить маршрутом покупок|общей набережной/);
   assert.match(memorialTranscript, /Памятник советским воинам.+Музейной площади/s);
-  assert.match(parkTranscript, /Территория парка Сталина/);
+  assert.match(parkTranscript, /Тихая прибрежная зона Сунгари/);
 });
 
 test("导览探索区使用上下全宽布局", async () => {
